@@ -56,8 +56,7 @@ def image(image_path,op):
     payload = {
     "prompt": "photo of a human",
     "face_image": b64_image,
-    "negative_prompt": "(lowres, low quality, worst quality:1.2), (text:1.2), watermark, (frame:1.2), deformed, ugly, deformed eyes, blur, out of focus, blurry, deformed cat, deformed, photo, anthropomorphic cat, monochrome, pet collar, gun, weapon, blue, 3d, drones, drone, buildings in background, green, no clothes",
-    
+    "negative_prompt": "(lowres, low quality, worst quality:1.2), (text:1.2), watermark, (frame:1.2), deformed, ugly, deformed eyes, blur, out of focus, blurry, deformed cat, deformed, photo, anthropomorphic cat, monochrome, pet collar, gun, weapon, blue, 3d, drones, drone, buildings in background, green, no clothes, (pixelated, noisy, grainy), (blurry, out of focus, unclear), (low resolution, low detail), (painting, drawing, sketch), (cartoon, anime, comic book), (abstract, surreal, dreamlike), (background, environment, setting), (props, objects, accessories), (other people, animals, creatures), (deformed, unnatural, distorted), (unrealistic, implausible, illogical), (offensive, inappropriate, harmful)",
     "style": op,
     "samples": 1,
     "num_inference_steps": 10,
@@ -125,7 +124,7 @@ def upload_image():
     if file:
         image_path = os.path.join('static', 'captured_image.jpg')
         file.save(image_path)
-        shutil.copyfile(image_path, "../output/"+str(instance_no)+"_0.jpg")
+        shutil.copyfile(image_path, "../HOI_output/static/images"+str(instance_no)+"_0.jpg")
         # file.save("../output/"+str(instance_no)+"_0.jpg")
         print(f"Image saved to {image_path}")
         image(image_path,selected_option_1)
@@ -172,7 +171,7 @@ def add_logo(original_image,op):
     modified_image_path = './static/modified_image_'+op.replace(" ","_")+'.png'
     original_image.save(modified_image_path)
     global image_count
-    original_image.save("../output/"+str(instance_no)+"_"+str(image_count)+".png")
+    original_image.save("../HOI_output/static/images/"+str(instance_no)+"_"+str(image_count)+".png")
     image_count+=1
 
 
