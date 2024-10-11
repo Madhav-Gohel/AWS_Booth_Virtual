@@ -1,6 +1,7 @@
 from email.message import EmailMessage
 import os
 import base64
+import shutil
 import smtplib
 import ssl
 import requests
@@ -9,6 +10,11 @@ from PIL import Image, ImageEnhance, ImageChops
 from flask import Flask, redirect, request, jsonify, url_for, render_template
 
 app = Flask(__name__)
+
+flag = 0
+global image_count
+image_count = 1
+instance_no = 1
 
 def to_base64(img_path):
     with open(img_path, 'rb') as img_file:
@@ -19,8 +25,8 @@ def to_base64(img_path):
 @app.route('/done')
 def done():
   return render_template('done.html')
+
     
-flag = 0      
 @app.route('/')
 def home():
     global flag
@@ -119,6 +125,8 @@ def upload_image():
     if file:
         image_path = os.path.join('static', 'captured_image.jpg')
         file.save(image_path)
+        shutil.copyfile(image_path, "../output/"+str(instance_no)+"_0.jpg")
+        # file.save("../output/"+str(instance_no)+"_0.jpg")
         print(f"Image saved to {image_path}")
         image(image_path,selected_option_1)
         image(image_path,selected_option_2)
@@ -163,6 +171,9 @@ def add_logo(original_image,op):
     # Save the modified image
     modified_image_path = './static/modified_image_'+op.replace(" ","_")+'.png'
     original_image.save(modified_image_path)
+    global image_count
+    original_image.save("../output/"+str(instance_no)+"_"+str(image_count)+".png")
+    image_count+=1
 
 
 def send_email_with_image(email,op1,op2):
