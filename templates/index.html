@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Upload Form</title>
+    <style>
+        /* Animation keyframes for sliding in */
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Form styling */
+        body {
+            background-color: #0d0d0d;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #0ff; /* Neon border */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Neon glow */
+            animation: slideIn 1s ease-in-out, blinkForm 2s infinite alternate ease-in-out; /* Blink effect */
+            background-color: #111;
+        }
+
+        @keyframes blinkForm {
+            0% {
+                border-color: #0ff; /* Start color */
+                background-color: #222; /* Start background color */
+            }
+            50% {
+                border-color: #ff00ff; /* Blink color */
+                background-color: #333; /* Blink background color */
+            }
+            100% {
+                border-color: #0ff; /* End color */
+                background-color: #222; /* End background color */
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: #00f7ff; /* Neon color for the heading */
+            background: linear-gradient(90deg, #00f7ff, #ff00ff, #ff7700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: blinkText 2s infinite alternate ease-in-out; /* Blinking effect */
+        }
+
+        @keyframes blinkText {
+            0% {
+                color: #00f7ff;
+            }
+            50% {
+                color: #ff00ff;
+            }
+            100% {
+                color: #ff7700;
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff; /* White text for labels */
+        }
+
+        input[type="file"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0ff; /* Neon border for inputs */
+            border-radius: 5px;
+            background-color: #222; /* Dark background for inputs */
+            color: #fff; /* White text for inputs */
+            transition: border-color 0.3s ease; /* Smooth border color change */
+        }
+
+        /* Input focus effect */
+        input[type="file"]:focus,
+        input[type="email"]:focus {
+            border-color: #ff00ff; /* Change border color on focus */
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); /* Neon glow on focus */
+        }
+
+        /* Button styling */
+        button {
+            background-color: #0ff; /* Neon button color */
+            color: #0d0d0d;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Neon glow */
+            animation: blinkButton 2s infinite alternate ease-in-out; /* Blink effect */
+        }
+
+        @keyframes blinkButton {
+            0% {
+                background-color: #0ff; /* Start color */
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Start glow */
+            }
+            50% {
+                background-color: #ff00ff; /* Blink color */
+                box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); /* Blink glow */
+            }
+            100% {
+                background-color: #0ff; /* End color */
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* End glow */
+            }
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #ff00ff; /* Change to pink on hover */
+            box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); /* Glow on hover */
+        }
+
+        /* Subtle pulse animation for the button */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        button:hover {
+            animation: pulse 0.6s ease-in-out infinite; /* Pulse on hover */
+        }
+    </style>
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <h2>Upload Your Image</h2>
+        <div style="margin-bottom: 15px;">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
