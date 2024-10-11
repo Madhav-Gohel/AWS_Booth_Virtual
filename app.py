@@ -124,7 +124,7 @@ def upload_image():
     if file:
         image_path = os.path.join('static', 'captured_image.jpg')
         file.save(image_path)
-        shutil.copyfile(image_path, "../HOI_output/static/images"+str(instance_no)+"_0.jpg")
+        shutil.copyfile(image_path, "../HOI_output/static/images/"+str(instance_no)+"_0.jpg")
         # file.save("../output/"+str(instance_no)+"_0.jpg")
         print(f"Image saved to {image_path}")
         image(image_path,selected_option_1)
