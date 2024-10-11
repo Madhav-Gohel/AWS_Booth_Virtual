@@ -10,7 +10,7 @@ from PIL import Image, ImageEnhance, ImageChops
 from flask import Flask, redirect, request, jsonify, url_for, render_template
 
 app = Flask(__name__)
-
+hi=0
 flag = 0
 global image_count
 image_count = 1
