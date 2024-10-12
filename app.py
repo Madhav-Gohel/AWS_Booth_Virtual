@@ -316,4 +316,4 @@ def send_email_with_image(email,op1,op2):
         print("Email sent successfully!")
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0',port=5674)
+    app.run(debug=True, host='0.0.0.0',port=5369)
