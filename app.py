@@ -13,7 +13,7 @@ app = Flask(__name__)
 flag = 0
 global image_count
 image_count = 1
-instance_no = 1
+instance_no = 2
 
 def to_base64(img_path):
     with open(img_path, 'rb') as img_file:
