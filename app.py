@@ -10,7 +10,6 @@ from PIL import Image, ImageEnhance, ImageChops
 from flask import Flask, redirect, request, jsonify, url_for, render_template
 
 app = Flask(__name__)
-hi=0
 flag = 0
 global image_count
 image_count = 1
@@ -317,4 +316,4 @@ def send_email_with_image(email,op1,op2):
         print("Email sent successfully!")
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0',port=5674)
